@@ -6,7 +6,7 @@
         {
             double Tf;
 
-            Tf = Tc * 9 / 5 + 32;
+            Tf = Tc + 9 / 5 + 32;
 
             return Tf;
         }
