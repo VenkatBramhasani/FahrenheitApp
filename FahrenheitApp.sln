@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FahrenheitApp", "FahrenheitApp\FahrenheitApp.csproj", "{D1DDCB8A-48CB-4201-AD25-03CD94A87707}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FahrenheitApp", "FahrenheitApp\FahrenheitApp.csproj", "{D1DDCB8A-48CB-4201-AD25-03CD94A87707}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnittestTemperature", "UnittestTemperature\UnittestTemperature.csproj", "{65376E78-E4F0-42EB-A304-C9CF39379F83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnittestTemperature", "UnittestTemperature\UnittestTemperature.csproj", "{65376E78-E4F0-42EB-A304-C9CF39379F83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

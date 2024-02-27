@@ -2,7 +2,7 @@
 @model FahrenheitApp.Pages.TemperatureModel
 @{
 }
-<div>
+<div >
 
     <h1>Temperature Converstion</h1>
 
@@ -13,13 +13,17 @@
         <input name="temperatureCelsius" type="number" class="form-control input-lg" autofocus required value="@Model.temperatureCelsius" />
         <br />
 
-        
+        <br />
+        <input id="ConvertButton" type="submit" value="Convert" class="btn btn-info" />
+        <br />
+        <br />
+        <br />
         Temperature [Fahrenheit]:
         <br />
         <input name="temperatureFahrenheit" type="number" class="form-control input-lg" autofocus required value="@Model.temperatureFahrenheit" />
         <br />
 
-        <input id="ConvertButton" type="submit" value="Convert" class="btn btn-info" />
+        
 
     </form>
 
