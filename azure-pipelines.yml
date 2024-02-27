@@ -36,7 +36,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/UnittestTemperature/*.csproj'
+    projects: '**/UnittestTemperature.csproj'
     arguments: '--configuration.$(buildConfiguration)'
 
 - task: PublishBuildArtifacts@1
