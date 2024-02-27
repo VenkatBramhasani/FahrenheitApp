@@ -17,6 +17,11 @@ variables:
 steps:
 - task: NuGetToolInstaller@1
 
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '5'
+  
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
@@ -28,7 +33,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    command: 'test'
+    projects: '**/*Test/*.csproj'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
