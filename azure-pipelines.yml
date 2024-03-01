@@ -34,12 +34,17 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: CollectCoverage
   inputs:
     command: 'test'
     projects: '**/UnittestTemperature.csproj'
     arguments: '-restore --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
-
+- task: PublishCodeCoverageResults@2
+  displayName: 'PublishCodeCOverageResults'
+  inputs:
+    codeCoverageTool: 'cobertura' # 'Cobertura'
+    summaryFileLocation: $(Build.SourcesDirectory)/TestResults/Coverage/coverage.xml
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
