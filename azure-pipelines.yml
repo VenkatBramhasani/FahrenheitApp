@@ -75,7 +75,7 @@ stages:
       displayName: Build and publish image to Azure Container Registry
       inputs:
         command: buildAndPush
-        containerRegistry: $(dockerRegistryServiceConnection)
+        containerRegistry: 'ACR-DevOps' 
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         tags: $(tag)
