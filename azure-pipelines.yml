@@ -37,7 +37,8 @@ steps:
   inputs:
     command: 'test'
     projects: '**/UnittestTemperature.csproj'
-    arguments: '-restore --configuration $(buildConfiguration)'
+    arguments: '-restore --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
+
 
 - task: PublishBuildArtifacts@1
   inputs:
