@@ -57,28 +57,30 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
-- stage: 'BuildImage'
-  displayName: 'Build the Image'
-  jobs: 
-  - job: 'BuildImage'
-    displayName: 'Build Image and push'
+- stage: 'Build'
+  displayName: 'Build and push stage'
+  jobs:
+  - job: Build
+    displayName: Build
     pool:
-      vmImage: 'ubuntu-latest'
-
-    variables:
-      dockerRegistryServiceConnection: 'ACR-DevOps'
-      imageRepository: 'a2nacr.azurecr.io'
-      dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
-      tag: '$(Build.BuildId)'
+      vmImage: $(vmImageName)
+  variables:
+    # Container registry service connection established during pipeline creation
+    dockerRegistryServiceConnection: 'ae1a34b3-ce15-47de-8f7a-d4070c983c0f'
+    imageRepository: 'venkatbramhasanifahrenheitapp'
+    containerRegistry: 'a2nacr.azurecr.io'
+    dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+    tag: '$(Build.BuildId)'
     steps:
     - task: Docker@2
-      displayName: Build and publish image to Azure Container Registry
+      displayName: Build and push an image to container registry
       inputs:
         command: buildAndPush
-        containerRegistry: 'ACR-DevOps' 
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        tags: $(tag)
+        containerRegistry: $(dockerRegistryServiceConnection)
+        tags: |
+          $(tag)
     
    
  
