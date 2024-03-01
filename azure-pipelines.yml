@@ -40,11 +40,11 @@ steps:
     projects: '**/UnittestTemperature.csproj'
     arguments: '-restore --configuration $(buildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
     publishTestResults: true
+
 - task: PublishCodeCoverageResults@2
-  displayName: 'PublishCodeCOverageResults'
+  displayName: 'PublishCodeCoverageResults'
   inputs:
-    codeCoverageTool: 'cobertura' # 'Cobertura'
-    summaryFileLocation: $(Build.SourcesDirectory)/TestResults/Coverage/coverage.xml
+    summaryFileLocation: '$(Build.SourcesDirectory)/TestResults/Coverage/coverage.cobertura.xml'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
