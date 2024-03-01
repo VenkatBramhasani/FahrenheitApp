@@ -71,7 +71,7 @@ stages:
       dockerRegistryServiceConnection: 'ae1a34b3-ce15-47de-8f7a-d4070c983c0f'
       imageRepository: 'venkatbramhasanifahrenheitapp'
       containerRegistry: 'a2nacr.azurecr.io'
-      dockerfilePath: '*/$(Build.SourcesDirectory)/Dockerfile'
+      dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
       tag: '$(Build.BuildId)'
     steps:
     - task: Docker@2
