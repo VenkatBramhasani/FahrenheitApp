@@ -57,7 +57,7 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
-- stage: 'Build'
+- stage: 'BuildImage'
   displayName: 'Build and push stage'
   dependsOn: Build
   condition:  succeeded()
