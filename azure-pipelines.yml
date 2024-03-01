@@ -56,3 +56,22 @@ stages:
         PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'drop'
         publishLocation: 'Container'
+
+- stage: 'Build Docker Image'
+  jobs:
+  - job: 'ImageBuilder'
+    displayName: 'Build docker Image Job'
+    pool:
+      vmImage: 'ubuntu-latest'
+  variables:
+    dockerRegistryServiceConnection: 'ACR-DevOps'
+    imageRepository: 'a2nacr.azurecr.io'
+    dockerfilePath: '$(Build.SourcesDirectory)/app/Dockerfile'
+    tag: '$(Build.BuildId)'
+    steps:
+      - task: Docker@2
+        inputs:
+          command: 'buildAndPush'
+          Dockerfile: '**/Dockerfile'
+          tags: '$(tag)'
+      
