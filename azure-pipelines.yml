@@ -57,7 +57,7 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
-- stage: 'Build Docker Image'
+- stage: 'Build Docker Image stage'
   jobs:
   - job: 'ImageBuilder'
     displayName: 'Build docker Image Job'
@@ -70,6 +70,7 @@ stages:
     tag: '$(Build.BuildId)'
     steps:
     - task: Docker@2
+      displayName: 'build and push the docker image'
       inputs:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
