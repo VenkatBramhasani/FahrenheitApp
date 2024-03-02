@@ -57,6 +57,32 @@ stages:
         ArtifactName: 'drop'
         publishLocation: 'Container'
 
+- stage: 'BuildImage'
+  displayName: 'Build and push stage'
+  dependsOn: Build
+  condition:  succeeded()
+  jobs:
+  - job: BuildImage
+    displayName: BuildImage
+    pool:
+      vmImage: 'ubantu-latest'
+    variables:
+      # Container registry service connection established during pipeline creation
+      dockerRegistryServiceConnection: '879f7183-77b8-4546-8bfa-df95c96ac1c9'
+      imageRepository: 'venkatbramhasanifahrenheitapp'
+      containerRegistry: 'A2Nacr'
+      dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+      tag: '$(Build.BuildId)'
+    steps:
+    - task: Docker@2
+      displayName: Build and push an image to container registry
+      inputs:
+        containerRegistry: 'A2Nacr'
+        repository: '$(imageRepository)'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
+     
 
    
  
