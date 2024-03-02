@@ -70,7 +70,7 @@ stages:
       # Container registry service connection established during pipeline creation
       dockerRegistryServiceConnection: '879f7183-77b8-4546-8bfa-df95c96ac1c9'
       imageRepository: 'venkatbramhasanifahrenheitapp'
-      containerRegistry: 'A2Nacr'
+      containerRegistry: 'a2nacr.azurecr.io'
       dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
       tag: '$(Build.BuildId)'
     steps:
