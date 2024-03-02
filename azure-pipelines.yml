@@ -65,7 +65,7 @@ stages:
   - job: BuildImage
     displayName: BuildImage
     pool:
-      vmImage: 'ubantu-latest'
+      vmImage: 'ubuntu-latest'
     variables:
       # Container registry service connection established during pipeline creation
       dockerRegistryServiceConnection: '879f7183-77b8-4546-8bfa-df95c96ac1c9'
