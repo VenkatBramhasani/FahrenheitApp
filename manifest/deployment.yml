@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-Tempapp
+  name: web-tempapp
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: web-Tempapp
+      app: web-tempapp
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -15,10 +15,10 @@ spec:
   template:
     metadata:
       labels:
-        app: web-Tempapp
+        app: web-tempapp
     spec:
       containers:
-      - name: web-Tempapp
+      - name: web-tempapp
         image: a2nacr.azurecr.io/vb/fahrenheitapp:87
         ports:
         - containerPort: 80
@@ -31,10 +31,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: web-Tempapp
+  name: web-tempapp
 spec:
   type: LoadBalancer
   ports:
   - port: 80
   selector:
-    app: web-Tempapp
+    app: web-tempapp
