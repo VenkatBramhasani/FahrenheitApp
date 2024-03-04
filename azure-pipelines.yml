@@ -68,6 +68,7 @@ stages:
       vmImage: 'ubuntu-latest'
     variables:
   # Container registry service connection established during pipeline creation
+      #dockerRegistryServiceConnection: 'd6825c62-9e19-406d-a28d-37bef3a3df78'
       dockerRegistryServiceConnection: 'd6825c62-9e19-406d-a28d-37bef3a3df78'
       imageRepository: 'venkatbramhasanifahrenheitapp'
       containerRegistry: 'a2nacr.azurecr.io'
@@ -81,7 +82,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
-        containerRegistry: 'd6825c62-9e19-406d-a28d-37bef3a3df78'
+        containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
 
