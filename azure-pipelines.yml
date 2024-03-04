@@ -85,3 +85,30 @@ stages:
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
         tags: '$(tag)'
+
+- stage: DeploytoAKS
+  displayName: DeploytoAKS
+  dependsOn: BuildImage
+  condition:  succeeded()
+  variables:
+    # Agent VM image name
+    vmImageName: 'ubuntu-latest'
+  jobs:
+  - job: Build
+    displayName: Build
+    pool:
+      vmImage: $(vmImageName)
+    variables:
+    # Container registry service connection established during pipeline creation
+      dockerRegistryServiceConnection: '5b0bf7f-64d7-482e-906c-994ec2f73277'
+      imageRepository: 'VB/fahrenheitapp'
+      containerRegistry: 'a2nacr.azurecr.io'
+      dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
+    steps:
+    - task: KubernetesManifest@1
+      inputs:
+        action: 'deploy'
+        connectionType: 'kubernetesServiceConnection'
+        kubernetesServiceConnection: 'ACR-AKS'
+        namespace: 'default'
+        manifests: '$(Build.SourcesDirectory)/manifest/deployment.yml'
