@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
       - name: web-tempapp
-        image: a2nacr.azurecr.io/vb/fahrenheitapp:87
+        image: a2nacr.azurecr.io/vb/fahrenheitapp:88
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         resources:
