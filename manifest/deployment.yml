@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-Tempapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-Tempapp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
+  template:
+    metadata:
+      labels:
+        app: web-Tempapp
+    spec:
+      containers:
+      - name: web-Tempapp
+        image: a2nacr.azurecr.io/vb/fahrenheitapp:87
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: 300m
+          limits:
+            cpu: 500m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-Tempapp
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: web-Tempapp
