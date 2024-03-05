@@ -80,7 +80,7 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        containerRegistry: '85b0bf7f-64d7-482e-906c-994ec2f73277'
+        containerRegistry: '791e35a7-1a9e-46fa-a2df-dec4e0e484cb'
         repository: '$(imageRepository)'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
