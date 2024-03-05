@@ -109,6 +109,6 @@ stages:
       inputs:
         action: 'deploy'
         connectionType: 'kubernetesServiceConnection'
-        kubernetesServiceConnection: 'ACR-AKS'
+        kubernetesServiceConnection: '443ebe44-e062-4f2f-8be7-0250c7bef2aa'
         namespace: 'default'
         manifests: '$(Build.SourcesDirectory)/manifest/deployment.yml'
