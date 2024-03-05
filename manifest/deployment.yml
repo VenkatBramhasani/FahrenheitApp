@@ -19,15 +19,17 @@ spec:
     spec:
       containers:
       - name: web-tempapp
-        image: a2nacr.azurecr.io/vb/fahrenheitapp:88
+        image: a2nacr.azurecr.io/temp-app:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 80
         resources:
           requests:
-            cpu: 300m
+            cpu: 250m
           limits:
             cpu: 500m
+      imagePullSecrets: 
+        - name: mysecret
 ---
 apiVersion: v1
 kind: Service
