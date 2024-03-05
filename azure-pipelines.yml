@@ -64,7 +64,7 @@ stages:
   condition:  succeeded()
   variables:
   # Container registry service connection established during pipeline creation
-    dockerRegistryServiceConnection: '5b0bf7f-64d7-482e-906c-994ec2f73277'
+    dockerRegistryServiceConnection: 'b0344cef-5947-49c2-9730-6627d7f935a0'
     imageRepository: 'VB/fahrenheitapp'
     containerRegistry: 'a2nacr.azurecr.io'
     dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
@@ -80,7 +80,7 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        containerRegistry: '791e35a7-1a9e-46fa-a2df-dec4e0e484cb'
+        containerRegistry: 'b0344cef-5947-49c2-9730-6627d7f935a0'
         repository: '$(imageRepository)'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
